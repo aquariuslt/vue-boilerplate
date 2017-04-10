@@ -6,6 +6,9 @@
   "description": "Vue boilerplate",
   "repository": "https://github.com/Aquariuslt/Vue-Boilerplate",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --inline --port 4200 --host 0.0.0.0"
+  },
   "dependencies": {
     "vue": "^2.2.6",
     "vue-router": "^2.4.0"
@@ -17,6 +20,7 @@
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-env": "^1.2.1",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
     "chalk": "^1.1.3",
@@ -46,6 +50,7 @@
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
+    "webpack-dev-server": "^2.4.2",
     "webpack-hot-middleware": "^2.16.1",
     "webpack-merge": "^2.6.1"
   }
