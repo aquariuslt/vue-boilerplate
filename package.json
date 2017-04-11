@@ -7,13 +7,16 @@
   "repository": "https://github.com/Aquariuslt/Vue-Boilerplate",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --inline --port 4200 --host 0.0.0.0"
+    "start": "webpack-dev-server --config ./tasks/webpack/webpack.dev.babel.js",
+    "dev": "webpack-dev-server --config ./tasks/webpack/webpack.dev.babel.js",
+    "build": "rimraf dist && webpack --config ./tasks/webpack/webpack.prod.babel.js"
   },
   "dependencies": {
     "vue": "^2.2.6",
     "vue-router": "^2.4.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.62",
     "@types/webpack": "^2.2.14",
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
@@ -37,12 +40,15 @@
     "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.28.0",
     "http-proxy-middleware": "^0.17.3",
+    "lodash": "^4.17.4",
+    "normalize.css": "^6.0.0",
     "opn": "^4.0.2",
     "optimize-css-assets-webpack-plugin": "^1.3.0",
     "ora": "^1.1.0",
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
+    "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
     "vue-loader": "^11.1.4",
     "vue-style-loader": "^2.0.0",

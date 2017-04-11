@@ -2,9 +2,15 @@
 .idea
 *.iml
 
+# VSCode
+.vscode
+
 # Node
 node_modules
 
 # Logs
 *.log
 
+# Build & Distribution
+build
+dist

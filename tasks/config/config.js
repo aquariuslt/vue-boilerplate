@@ -8,7 +8,6 @@ let config = {
     index: pathUtil.root('dist', 'index.html'),
     assetsRoot: pathUtil.root('dist'),
     assetsPublicPath: '/',
-    assetsSubDirectory: 'static',
     productionSourceMap: true,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
@@ -16,10 +15,9 @@ let config = {
   dev: {
     port: 4200,
     autoOpenBrowser: true,
-    assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
-    cssSourceMap: false
+    cssSourceMap: true
   }
 };
 
