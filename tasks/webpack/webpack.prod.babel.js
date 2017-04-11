@@ -4,10 +4,9 @@ import webpackMerge from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-
-
 import baseWebpackConfig from './webpack.base.babel';
 import * as pathUtil from '../util/path-util';
+
 
 let prodConfig = webpackMerge(baseWebpackConfig, {
   devtool: 'source-map',
