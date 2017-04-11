@@ -13,7 +13,7 @@ const PORT = 5000;
 let devConfig = webpackMerge(baseWebpackConfig, {
   devtool: 'source-map',
   output: {
-    path: pathUtil.root('dist'),
+    path: pathUtil.root(),
     publicPath: PROTOCOL + HOST + ':' + PORT,
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].bundle.map',
@@ -147,13 +147,15 @@ let devConfig = webpackMerge(baseWebpackConfig, {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'file-loader?name=assets/[name].[ext]'
+        loader: 'file-loader?name=/assets/img/[name].[ext]'
       }
     ]
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': 'development'
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

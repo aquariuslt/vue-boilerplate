@@ -24,6 +24,7 @@
       "never"
     ],
     "require-jsdoc": "off",
-    "prefer-rest-params": "off"
+    "prefer-rest-params": "off",
+    "space-before-function-paren": "off"
   }
 }

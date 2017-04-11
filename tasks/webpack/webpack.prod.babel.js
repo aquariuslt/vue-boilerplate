@@ -143,13 +143,15 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'file-loader?name=assets/[name].[ext]'
+        loader: 'file-loader?name=/assets/img/[name].[ext]'
       }
     ]
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': 'production'
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {

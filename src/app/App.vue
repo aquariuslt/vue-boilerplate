@@ -1,10 +1,24 @@
 <template>
-  <div></div>
+  <div>
+    <logo></logo>
+  </div>
 </template>
 
 
 <script>
-  export default{};
+  import Logo from './components/logo/Logo.vue';
+  export default {
+    components: {
+      Logo
+    },
+    data () {
+      return {
+        message: 'Hello Vue'
+      };
+    }
+  };
+
+
 </script>
 
 <style>
