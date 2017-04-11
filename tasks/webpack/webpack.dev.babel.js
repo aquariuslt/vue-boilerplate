@@ -26,104 +26,104 @@ let devConfig = webpackMerge(baseWebpackConfig, {
         loader: 'vue-loader',
         options: {
           loaders: {
-            "css": [
-              "vue-style-loader",
+            'css': [
+              'vue-style-loader',
               {
-                "loader": "css-loader",
-                "options": {
-                  "minimize": false,
-                  "sourceMap": false
+                'loader': 'css-loader',
+                'options': {
+                  'minimize': false,
+                  'sourceMap': false
                 }
               }
             ],
-            "postcss": [
-              "vue-style-loader",
+            'postcss': [
+              'vue-style-loader',
               {
-                "loader": "css-loader",
-                "options": {
-                  "minimize": false,
-                  "sourceMap": false
+                'loader': 'css-loader',
+                'options': {
+                  'minimize': false,
+                  'sourceMap': false
                 }
               }
             ],
-            "less": [
-              "vue-style-loader",
+            'less': [
+              'vue-style-loader',
               {
-                "loader": "css-loader",
-                "options": {
-                  "minimize": false,
-                  "sourceMap": false
+                'loader': 'css-loader',
+                'options': {
+                  'minimize': false,
+                  'sourceMap': false
                 }
               },
               {
-                "loader": "less-loader",
-                "options": {
-                  "sourceMap": false
+                'loader': 'less-loader',
+                'options': {
+                  'sourceMap': false
                 }
               }
             ],
-            "sass": [
-              "vue-style-loader",
+            'sass': [
+              'vue-style-loader',
               {
-                "loader": "css-loader",
-                "options": {
-                  "minimize": false,
-                  "sourceMap": false
+                'loader': 'css-loader',
+                'options': {
+                  'minimize': false,
+                  'sourceMap': false
                 }
               },
               {
-                "loader": "sass-loader",
-                "options": {
-                  "indentedSyntax": true,
-                  "sourceMap": false
+                'loader': 'sass-loader',
+                'options': {
+                  'indentedSyntax': true,
+                  'sourceMap': false
                 }
               }
             ],
-            "scss": [
-              "vue-style-loader",
+            'scss': [
+              'vue-style-loader',
               {
-                "loader": "css-loader",
-                "options": {
-                  "minimize": false,
-                  "sourceMap": false
+                'loader': 'css-loader',
+                'options': {
+                  'minimize': false,
+                  'sourceMap': false
                 }
               },
               {
-                "loader": "sass-loader",
-                "options": {
-                  "sourceMap": false
+                'loader': 'sass-loader',
+                'options': {
+                  'sourceMap': false
                 }
               }
             ],
-            "stylus": [
-              "vue-style-loader",
+            'stylus': [
+              'vue-style-loader',
               {
-                "loader": "css-loader",
-                "options": {
-                  "minimize": false,
-                  "sourceMap": false
+                'loader': 'css-loader',
+                'options': {
+                  'minimize': false,
+                  'sourceMap': false
                 }
               },
               {
-                "loader": "stylus-loader",
-                "options": {
-                  "sourceMap": false
+                'loader': 'stylus-loader',
+                'options': {
+                  'sourceMap': false
                 }
               }
             ],
-            "styl": [
-              "vue-style-loader",
+            'styl': [
+              'vue-style-loader',
               {
-                "loader": "css-loader",
-                "options": {
-                  "minimize": false,
-                  "sourceMap": false
+                'loader': 'css-loader',
+                'options': {
+                  'minimize': false,
+                  'sourceMap': false
                 }
               },
               {
-                "loader": "stylus-loader",
-                "options": {
-                  "sourceMap": false
+                'loader': 'stylus-loader',
+                'options': {
+                  'sourceMap': false
                 }
               }
             ]
@@ -142,16 +142,19 @@ let devConfig = webpackMerge(baseWebpackConfig, {
         include: pathUtil.root('src'),
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader?sourceMap',
-        }),
+          use: 'css-loader?sourceMap'
+        })
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'file-loader?name=assets/[name].[ext]'
-      },
+      }
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': 'development'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({

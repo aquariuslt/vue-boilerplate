@@ -1,4 +1,29 @@
 {
+  "root": true,
   "extends": "google",
-  "rules": {}
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "html"
+  ],
+  "rules": {
+    "semi": [
+      "error",
+      "always",
+      {
+        "omitLastInOneLineBlock": true
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "require-jsdoc": "off",
+    "prefer-rest-params": "off"
+  }
 }
