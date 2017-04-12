@@ -25,6 +25,9 @@
     ],
     "require-jsdoc": "off",
     "prefer-rest-params": "off",
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "max-len": "off",
+    "linebreak-style": "off",
+    "no-unused-vars": "off"
   }
 }

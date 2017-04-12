@@ -1,15 +1,15 @@
 <template>
   <div>
-    <logo></logo>
+    <workflow width="800" height="400"></workflow>
   </div>
 </template>
 
 
 <script>
-  import Logo from './components/logo/Logo.vue';
+  import Workflow from './components/workflow/Workflow.vue';
   export default {
     components: {
-      Logo
+      Workflow
     },
     data () {
       return {
