@@ -143,7 +143,11 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'file-loader?name=/assets/img/[name].[ext]'
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: pathUtil.root('src', 'assets') + '[name].[ext]'
+        }
       }
     ]
   },
@@ -169,6 +173,7 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      favicon: './src/favicon.png',
       inject: true,
       minify: {
         removeComments: true,

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <img src="../../../assets/img/logo.png"/>
   </div>
 </template>
 
@@ -8,4 +7,6 @@
   export default {};
 </script>
 
-<style></style>
+<style scoped>
+
+</style>

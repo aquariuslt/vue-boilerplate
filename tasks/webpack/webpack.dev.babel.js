@@ -147,7 +147,11 @@ let devConfig = webpackMerge(baseWebpackConfig, {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'file-loader?name=/assets/img/[name].[ext]'
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: pathUtil.root('src', 'assets') + '[name].[ext]'
+        }
       }
     ]
   },
@@ -170,7 +174,8 @@ let devConfig = webpackMerge(baseWebpackConfig, {
       filename: '[name].bundle.css'
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: './src/index.html',
+      favicon: './src/favicon.png'
     }),
     new FriendlyErrorsPlugin()
   ],
