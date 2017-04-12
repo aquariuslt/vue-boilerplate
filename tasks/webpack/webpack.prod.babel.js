@@ -37,8 +37,8 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
               {
                 'loader': 'css-loader',
                 'options': {
-                  'minimize': false,
-                  'sourceMap': false
+                  'minimize': true,
+                  'sourceMap': true
                 }
               }
             ],
@@ -47,14 +47,14 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
               {
                 'loader': 'css-loader',
                 'options': {
-                  'minimize': false,
-                  'sourceMap': false
+                  'minimize': true,
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'less-loader',
                 'options': {
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -63,15 +63,15 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
               {
                 'loader': 'css-loader',
                 'options': {
-                  'minimize': false,
-                  'sourceMap': false
+                  'minimize': true,
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'sass-loader',
                 'options': {
                   'indentedSyntax': true,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -80,13 +80,14 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
               {
                 'loader': 'css-loader',
                 'options': {
-                  'minimize': false,
+                  'minimize': true,
                   'sourceMap': false
                 }
               },
               {
                 'loader': 'sass-loader',
                 'options': {
+                  'minimize': true,
                   'sourceMap': false
                 }
               }
@@ -96,14 +97,14 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
               {
                 'loader': 'css-loader',
                 'options': {
-                  'minimize': false,
-                  'sourceMap': false
+                  'minimize': true,
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'stylus-loader',
                 'options': {
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -112,14 +113,14 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
               {
                 'loader': 'css-loader',
                 'options': {
-                  'minimize': false,
-                  'sourceMap': false
+                  'minimize': true,
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'stylus-loader',
                 'options': {
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ]
@@ -166,6 +167,9 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
     new ExtractTextPlugin({
       filename: '[name].[contenthash].css'
     }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    }),
     new OptimizeCssAssetsPlugin({
       cssProcessorOptions: {
         safe: true
@@ -183,11 +187,20 @@ let prodConfig = webpackMerge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: [
-        'main',
-        'vendor',
-        'styles'
-      ]
+      name: 'vendor',
+      minChunks: function (module) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            pathUtil.root('node_modules')
+          ) === 0
+        );
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      chunks: ['vendor']
     })
   ]
 });

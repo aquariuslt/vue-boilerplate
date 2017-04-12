@@ -4,7 +4,6 @@
 let baseWebpackConfig = {
   entry: {
     main: './src/main.js',
-    vendor: './src/vendor.js',
     styles: './src/style.css'
   },
   resolve: {

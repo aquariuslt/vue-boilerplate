@@ -32,7 +32,7 @@ let devConfig = webpackMerge(baseWebpackConfig, {
                 'loader': 'css-loader',
                 'options': {
                   'minimize': false,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -42,7 +42,7 @@ let devConfig = webpackMerge(baseWebpackConfig, {
                 'loader': 'css-loader',
                 'options': {
                   'minimize': false,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -52,13 +52,13 @@ let devConfig = webpackMerge(baseWebpackConfig, {
                 'loader': 'css-loader',
                 'options': {
                   'minimize': false,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'less-loader',
                 'options': {
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -68,14 +68,14 @@ let devConfig = webpackMerge(baseWebpackConfig, {
                 'loader': 'css-loader',
                 'options': {
                   'minimize': false,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'sass-loader',
                 'options': {
                   'indentedSyntax': true,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -85,13 +85,13 @@ let devConfig = webpackMerge(baseWebpackConfig, {
                 'loader': 'css-loader',
                 'options': {
                   'minimize': false,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'sass-loader',
                 'options': {
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -101,13 +101,13 @@ let devConfig = webpackMerge(baseWebpackConfig, {
                 'loader': 'css-loader',
                 'options': {
                   'minimize': false,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'stylus-loader',
                 'options': {
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ],
@@ -117,13 +117,13 @@ let devConfig = webpackMerge(baseWebpackConfig, {
                 'loader': 'css-loader',
                 'options': {
                   'minimize': false,
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               },
               {
                 'loader': 'stylus-loader',
                 'options': {
-                  'sourceMap': false
+                  'sourceMap': true
                 }
               }
             ]
@@ -164,11 +164,20 @@ let devConfig = webpackMerge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      name: [
-        'main',
-        'vendor',
-        'styles'
-      ]
+      name: 'vendor',
+      minChunks: function (module) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            pathUtil.root('node_modules')
+          ) === 0
+        );
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      chunks: ['vendor']
     }),
     new ExtractTextPlugin({
       filename: '[name].bundle.css'

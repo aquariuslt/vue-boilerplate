@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/gsap@^1.19.1":
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/@types/gsap/-/gsap-1.19.1.tgz#ee93590b1ef7dc86b0b779e94e38b5bad6e8c678"
+
 "@types/lodash@^4.14.62":
   version "4.14.62"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.62.tgz#8674f9861582148a60b7a89cb260f11378d11683"
