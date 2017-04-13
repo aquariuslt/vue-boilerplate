@@ -1,6 +1,6 @@
 <template>
   <div>
-    <workflow width="800" height="400"></workflow>
+    <workflow :width="800" :height="400"></workflow>
   </div>
 </template>
 

@@ -146,11 +146,18 @@ let devConfig = webpackMerge(baseWebpackConfig, {
         })
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: pathUtil.root('src', 'assets') + '[name].[ext]'
+          name: './assets/imgs/' + '[name].[ext]'
+        }
+      },
+      {
+        test: /\.(woff|woff2|ttf|eot)$/,
+        loader: 'file-loader',
+        options: {
+          name: './assets/fonts/' + '[name].[ext]'
         }
       }
     ]
@@ -180,7 +187,8 @@ let devConfig = webpackMerge(baseWebpackConfig, {
       chunks: ['vendor']
     }),
     new ExtractTextPlugin({
-      filename: '[name].bundle.css'
+      filename: '[name].bundle.css',
+      disable: true
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',

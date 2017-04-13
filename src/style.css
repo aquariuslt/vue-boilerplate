@@ -1,2 +1,3 @@
 /* Global Style CSS file */
-@import '~normalize.css/normalize.css';
+@import "~normalize.css/normalize.css";
+@import "fonts.css";
