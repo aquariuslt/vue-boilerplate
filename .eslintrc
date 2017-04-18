@@ -28,6 +28,7 @@
     "space-before-function-paren": "off",
     "max-len": "off",
     "linebreak-style": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "eol-last": "off"
   }
 }

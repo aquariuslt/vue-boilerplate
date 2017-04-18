@@ -1,15 +1,15 @@
 {
   "name": "Vue-Boilerplate",
   "version": "1.0.0",
+  "description": "A Vue boilerplate like Angular build flow.",
   "author": "Aquariuslt<superaquariuslt@gmail.com>",
-  "description": "Vue boilerplate",
-  "repository": "https://github.com/Aquariuslt/Vue-Boilerplate",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config ./tasks/webpack/webpack.dev.babel.js",
-    "dev": "webpack-dev-server --config ./tasks/webpack/webpack.dev.babel.js",
-    "build": "rimraf dist && webpack --config ./tasks/webpack/webpack.prod.babel.js",
-    "lint": "eslint --ext .js,.vue src"
+    "clean": "gulp clean",
+    "dev": "gulp serve",
+    "build": "gulp build:prod",
+    "lint": "gulp lint",
+    "test": "gulp test"
   },
   "dependencies": {
     "gsap": "^1.19.1",
@@ -44,11 +44,16 @@
     "file-loader": "^0.11.0",
     "friendly-errors-webpack-plugin": "^1.1.3",
     "gulp": "^3.9.1",
+    "gulp-inject-string": "^1.1.0",
+    "gulp-rimraf": "^0.2.1",
+    "gulp-sequence": "^0.4.6",
+    "gulp-util": "^3.0.8",
     "html-webpack-plugin": "^2.28.0",
     "http-proxy-middleware": "^0.17.3",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "node-sass": "^4.5.2",
     "normalize.css": "^6.0.0",
     "opn": "^4.0.2",
@@ -57,14 +62,15 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "vue-loader": "^11.1.4",
-    "vue-style-loader": "^2.0.0",
-    "vue-template-compiler": "^2.2.4",
-    "webpack": "^2.2.1",
+    "vue-loader": "^11.3.4",
+    "vue-style-loader": "^3.0.0",
+    "vue-template-compiler": "^2.2.6",
+    "webpack": "^2.3.3",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-dev-server": "^2.4.2",
     "webpack-hot-middleware": "^2.16.1",
-    "webpack-merge": "^2.6.1"
+    "webpack-merge": "^2.6.1",
+    "winston": "^2.3.1"
   }
 }

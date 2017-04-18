@@ -14,10 +14,12 @@
           <!-- Node G -->
           <transition-group name="workflow-node-list" class="workflow-node-graph" tag="g">
             <circle v-for="node in nodeList"
-                    r="30"
                     v-bind:key="node"
+                    v-bind:r="node.r"
                     v-bind:cx="node.cx"
                     v-bind:cy="node.cy"
+                    v-bind:class="node.fillClass"
+                    v-on:click="increase(node)"
                     class="workflow-node">
             </circle>
           </transition-group>
@@ -39,6 +41,7 @@
 
 <script>
   import _ from 'lodash';
+  import {TweenLite} from 'gsap';
 
   let sampleWorkflowSchemaData = {
     nodes: [
@@ -123,9 +126,11 @@
       console.log('depth:', depth, 'nodes:', depthNodeLength);
       _.each(currentDepthNodes, function (node, nodeIndex) {
         let clonedNode = _.clone(node);
+        clonedNode.r = 30;
         clonedNode.cx = widthPerDepth * depth + widthPerDepth / 2;
         clonedNode.cy = layout.height / (depthNodeLength * 2) + nodeIndex * (layout.height / (depthNodeLength));
         clonedNode.depth = depth;
+        clonedNode.fillClass = calculateFillColorClass(clonedNode.r);
         nodeList.push(clonedNode);
       });
     });
@@ -150,10 +155,13 @@
     // calculate label
     let labelList = [];
     _.each(nodeList, function (node) {
+      let scaled = 3.5;
+      let textLength = _.isUndefined(node.name) ? 0 : node.name.length * scaled;
+      let textHeight = 3 * scaled;
       let label = {
         text: node.name,
-        x: node.cx,
-        y: node.cy
+        x: node.cx - textLength,
+        y: node.cy + node.r + textHeight
       };
       labelList.push(label);
     });
@@ -183,6 +191,22 @@
   }
 
 
+  function calculateFillColorClass(level) {
+    const warningLimit = 40;
+    const dangerLimit = 50;
+    let targetClassPrefix = 'workflow-node';
+
+    if (level >= warningLimit && level < dangerLimit) {
+      return targetClassPrefix + '-warning';
+    }
+    if (level >= dangerLimit) {
+      return targetClassPrefix + '-danger';
+    }
+
+    return targetClassPrefix + '-normal';
+  }
+
+
   export default{
     name: 'workflow',
     props: [
@@ -205,7 +229,26 @@
       this.pathList = pathList;
       this.labelList = labelList;
     },
-    methods: {}
+    methods: {
+      increase: function (workflowNode) {
+        let originalRadius = workflowNode.r;
+        let targetRadius = originalRadius + 5;
+
+        let targetFillColorClass = calculateFillColorClass(workflowNode.r);
+
+        TweenLite.to(
+          workflowNode,
+          1,
+          {
+            r: targetRadius,
+            fillClass: targetFillColorClass
+          }
+        );
+      },
+      decrease: function () {
+        console.log('decrease');
+      }
+    }
   };
 </script>
 
@@ -226,6 +269,23 @@
   }
 
   .workflow-node-graph {
+    transition: 1s;
+  }
+
+  $workflow-normal-color: #41B883;
+  $workflow-warning-color: #b88207;
+  $workflow-danger-color: #b82800;
+
+  .workflow-node {
+    &-normal {
+      fill: $workflow-normal-color !important;;
+    }
+    &-warning {
+      fill: $workflow-warning-color !important;
+    }
+    &-danger {
+      fill: $workflow-danger-color !important;;
+    }
   }
 
   $workflow-node-content-color: #41B883;
@@ -248,7 +308,8 @@
   }
 
   .workflow-label {
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: lighter;
     fill: #000000;
   }
 
@@ -277,14 +338,11 @@
 
   }
 
-
-
   .workflow-label-list-enter-active,
-  .workflow-label-list-leave-active{
+  .workflow-label-list-leave-active {
     opacity: 0;
     transition: 1s;
   }
-
 
 
 </style>
