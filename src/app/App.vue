@@ -1,16 +1,15 @@
 <template>
   <div>
-    <workflow :width="800" :height="400"></workflow>
+    <h1>Navigation:</h1>
+    <router-link to="/login">Login</router-link>
+    <router-link to="/home">Home</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 
 <script>
-  import Workflow from './components/workflow/Workflow.vue';
   export default {
-    components: {
-      Workflow
-    },
     data () {
       return {
         message: 'Hello Vue'

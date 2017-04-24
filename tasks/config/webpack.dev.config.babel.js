@@ -38,8 +38,7 @@ let webpackDevConfig = merge(webpackBaseConfig, {
       }
     }),
     new ExtractTextPlugin({
-      filename: '[name].bundle.css',
-      disable: true
+      filename: '[name].bundle.css'
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
