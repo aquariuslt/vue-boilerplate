@@ -10,6 +10,4 @@ Vue.use(VueRouter);
 let router = new VueRouter({});
 
 
-export {
-  router
-};
+export default router;

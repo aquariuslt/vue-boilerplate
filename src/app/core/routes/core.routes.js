@@ -1,6 +1,6 @@
 /* Created by Aquariuslt on 4/24/17.*/
 
-import Home from './Home.vue';
+import Home from '../pages/Home.vue';
 
 const coreRoutes = [
   {

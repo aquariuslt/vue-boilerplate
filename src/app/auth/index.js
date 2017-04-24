@@ -1,9 +1,9 @@
 /* Created by Aquariuslt on 4/24/17.*/
-import {router} from '../../router';
-import authRoutes from './auth.routes';
+import router from '../../router';
+import authRoutes from './routes/auth.routes';
 
-import {store} from '../../store';
-import authStore from './auth.store';
+import store from '../../store';
+import authStore from './store/auth.store';
 
 router.addRoutes(authRoutes);
-store.modules['auth'] = authStore;
+store.registerModule('auth', authStore);
