@@ -7,7 +7,8 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 
 import devConfig from './dev.config';
-import * as vueLoaderUtil from '../util/vue-loader-util';
+import vueLoaderUtil from '../util/vue-loader-util';
+import pathUtil from '../util/path-util';
 
 let webpackDevConfig = merge(webpackBaseConfig, {
   devtool: 'source-map',
@@ -35,6 +36,18 @@ let webpackDevConfig = merge(webpackBaseConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"development"'
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            pathUtil.root('node_modules')
+          ) === 0
+        );
       }
     }),
     new ExtractTextPlugin({

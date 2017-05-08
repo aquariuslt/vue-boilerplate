@@ -11,6 +11,6 @@ function root(args) {
 }
 
 
-export {
+export default{
   root
 };

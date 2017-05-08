@@ -9,7 +9,8 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 import webpackBaseConfig from './webpack.base.config.babel';
 import prodConfig from './prod.config';
-import * as vueLoaderUtil from '../util/vue-loader-util';
+import vueLoaderUtil from '../util/vue-loader-util';
+import pathUtil from '../util/path-util';
 
 let webpackProdConfig = merge(webpackBaseConfig, {
   devtool: 'source-map',
@@ -37,6 +38,18 @@ let webpackProdConfig = merge(webpackBaseConfig, {
         NODE_ENV: '"production"'
       }
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            pathUtil.root('node_modules')
+          ) === 0
+        );
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
@@ -59,8 +72,8 @@ let webpackProdConfig = merge(webpackBaseConfig, {
       filename: '[name].[chunkhash].css'
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      favicon: './src/' + prodConfig.favicon,
+      template: `./${prodConfig.dir.src}/index.html`,
+      favicon: `./${prodConfig.dir.src}/${prodConfig.file.favicon}`,
       inject: true,
       minify: {
         removeComments: true,
@@ -69,7 +82,7 @@ let webpackProdConfig = merge(webpackBaseConfig, {
       },
       chunksSortMode: 'dependency'
     }),
-    new CopyWebpackPlugin(prodConfig.assets)
+    new CopyWebpackPlugin(prodConfig.dir.assets)
   ],
   stats: {
     colors: true,

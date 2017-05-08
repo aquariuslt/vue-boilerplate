@@ -1,13 +1,15 @@
 /* Created by Aquariuslt on 4/11/17.*/
 import Vue from 'vue';
-import App from './app/App.vue';
+import VueMaterial from 'vue-material';
 import router from './router';
 import store from './store';
 import './app/core';
 import './app/auth';
 
-Vue.config.productionTip = false;
+import App from './app/App.vue';
 
+Vue.config.productionTip = false;
+Vue.use(VueMaterial);
 
 new Vue({
   el: '#app',

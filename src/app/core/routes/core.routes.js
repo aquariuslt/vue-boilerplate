@@ -5,6 +5,7 @@ import Home from '../pages/Home.vue';
 const coreRoutes = [
   {
     path: '/home',
+    name: 'Home',
     component: Home
   }
 ];

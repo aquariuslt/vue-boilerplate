@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-import * as pathUtil from '../util/path-util';
+import pathUtil from '../util/path-util';
 
 import baseConfig from './base.config';
 
@@ -26,12 +26,12 @@ let webpackBaseConfig = {
     rules: [
       {
         test: /\.js$/,
-        include: [pathUtil.root('src')],
+        include: [pathUtil.root(baseConfig.dir.src)],
         loader: 'babel-loader'
       },
       {
         test: /\.css$/,
-        include: pathUtil.root('src'),
+        include: pathUtil.root(baseConfig.dir.src),
         loader: ExtractTextPlugin.extract({
           use: ['css-loader'],
           fallback: ['style-loader']
@@ -72,8 +72,8 @@ let webpackBaseConfig = {
       }
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      favicon: './src/' + baseConfig.favicon
+      template: `./${baseConfig.dir.src}/index.html`,
+      favicon: `./${baseConfig.dir.src}/${baseConfig.file.favicon}`
     })
   ]
 };

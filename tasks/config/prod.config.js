@@ -2,12 +2,13 @@
 
 import merge from 'webpack-merge';
 import baseConfig from './base.config';
-import * as pathUtil from '../util/path-util';
+import pathUtil from '../util/path-util';
 
 let prodConfig = merge(baseConfig, {
   output: {
-    path: pathUtil.root('dist')
+    path: pathUtil.root(baseConfig.dir.dist)
   }
 });
+
 
 export default prodConfig;

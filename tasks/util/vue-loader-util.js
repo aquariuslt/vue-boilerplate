@@ -100,6 +100,6 @@ function generateStylesLoader(loaderNamePrefix, loaderOptions, extraOptions) {
 }
 
 
-export {
+export default{
   buildVueStylesLoader
 };
