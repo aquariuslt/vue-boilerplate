@@ -14,3 +14,7 @@ node_modules
 # Build & Distribution
 build
 dist
+
+# Test Report and Output
+coverage
+reports

@@ -10,10 +10,17 @@ let baseConfig = {
         from: 'src/assets',
         to: 'assets'
       }
-    ]
+    ],
+    test: {
+      unit: 'test/unit',
+      e2e: 'test/e2e'
+    }
   },
   file: {
-    favicon: 'favicon.png'
+    favicon: 'favicon.png',
+    karmaConf: 'karma.conf.babel.js',
+    nightWatch: 'nightwatch.json'
+
   }
 };
 
