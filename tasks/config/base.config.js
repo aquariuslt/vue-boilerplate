@@ -5,22 +5,21 @@ let baseConfig = {
     build: 'build',
     dist: 'dist',
     cache: '.cache',
+    test: {
+      unit: 'test/unit',
+      e2e: 'test/e2e'
+    },
     assets: [
       {
         from: 'src/assets',
         to: 'assets'
       }
-    ],
-    test: {
-      unit: 'test/unit',
-      e2e: 'test/e2e'
-    }
+    ]
   },
   file: {
     favicon: 'favicon.png',
     karmaConf: 'karma.conf.babel.js',
     nightWatch: 'nightwatch.json'
-
   }
 };
 

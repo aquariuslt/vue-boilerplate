@@ -1,6 +1,5 @@
 /* Created by Aquariuslt on 14/04/2017.*/
 
-import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
@@ -26,7 +25,11 @@ let webpackBaseConfig = {
     rules: [
       {
         test: /\.js$/,
-        include: [pathUtil.root(baseConfig.dir.src)],
+        include: [
+          pathUtil.root(baseConfig.dir.src),
+          pathUtil.root(baseConfig.dir.test.unit),
+          pathUtil.root(baseConfig.dir.test.e2e)
+        ],
         loader: 'babel-loader'
       },
       {
@@ -59,18 +62,6 @@ let webpackBaseConfig = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            pathUtil.root('node_modules')
-          ) === 0
-        );
-      }
-    }),
     new HtmlWebpackPlugin({
       template: `./${baseConfig.dir.src}/index.html`,
       favicon: `./${baseConfig.dir.src}/${baseConfig.file.favicon}`

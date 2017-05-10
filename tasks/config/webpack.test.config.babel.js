@@ -4,8 +4,6 @@ import merge from 'webpack-merge';
 
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
-import devConfig from './dev.config';
 import webpackBaseConfig from './webpack.base.config.babel';
 import vueLoaderUtil from '../util/vue-loader-util';
 
@@ -39,10 +37,7 @@ let webpackTestConfig = merge(webpackBaseConfig, {
     new ExtractTextPlugin({
       filename: '[name].bundle.css'
     })
-  ],
-  devServer: {
-    proxy: devConfig.devServer.proxy
-  }
+  ]
 
 });
 
