@@ -4,7 +4,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 import pathUtil from '../util/path-util';
-
 import baseConfig from './base.config';
 
 let webpackBaseConfig = {

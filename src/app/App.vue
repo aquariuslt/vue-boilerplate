@@ -15,8 +15,6 @@
     mounted: function () {
     }
   };
-
-
 </script>
 
 <style>
