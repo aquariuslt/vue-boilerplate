@@ -12,6 +12,25 @@ Features:
 
 ## Get Started 
 
+### Install Dependencies
+```bash
+npm install
+```
+
+### Development 
+```bash
+npm run dev
+```
+
+### Build Production Level files
+```bash
+npm run build
+```
+
+### Test
+```bash
+npm run test
+```
 
 
 
