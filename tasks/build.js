@@ -10,7 +10,7 @@ import './clean';
 
 import logger from './util/logger';
 
-gulp.task('build', function (done) {
+gulp.task('webpack', function (done) {
   logger.info('Webpack building.');
   webpack(webpackProdConfig, function (error, stats) {
     if (error) {
@@ -23,6 +23,6 @@ gulp.task('build', function (done) {
 });
 
 
-gulp.task('build:prod', sequence(['clean'], ['build']));
+gulp.task('build', sequence(['clean'], ['webpack']));
 
 
