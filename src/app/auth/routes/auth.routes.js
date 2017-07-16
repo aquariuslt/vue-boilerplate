@@ -1,6 +1,6 @@
 /* Created by Aquariuslt on 4/24/17.*/
 
-import Login from '../pages/Login.vue';
+import Login from '../layouts/Login.vue';
 
 const authRoutes = [
   {
