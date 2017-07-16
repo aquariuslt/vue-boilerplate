@@ -11,16 +11,6 @@ let karmaConfig = function (config) {
     files: [
       './specs/**/*.spec.js'
     ],
-    // plugins: [
-    //   'karma-phantomjs-shim',
-    //   'karma-chrome-launcher',
-    //   'karma-mocha',
-    //   'karma-sinon-chai',
-    //   'karma-webpack',
-    //   'karma-sourcemap-loader',
-    //   'karma-spec-reporter',
-    //   'karma-coverage'
-    // ],
     preprocessors: {
       './specs/**/*.spec.js': ['webpack', 'sourcemap']
     },
