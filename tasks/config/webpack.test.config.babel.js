@@ -2,11 +2,10 @@
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 
-
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpackBaseConfig from './webpack.base.config.babel';
 import vueLoaderUtil from '../util/vue-loader-util';
-
+import pathUtil from '../util/path-util';
 
 let webpackTestConfig = merge(webpackBaseConfig, {
   module: {
@@ -19,10 +18,21 @@ let webpackTestConfig = merge(webpackBaseConfig, {
           extract: false,
           minimize: false
         })
+      },
+      {
+        enforce: 'post',
+        test: /\.js$/,
+        include: [
+          pathUtil.resolve('src/main/webapp')
+        ],
+        exclude: [
+          /node_modules/
+        ],
+        loader: 'istanbul-instrumenter-loader'
       }
     ]
   },
-  devtool: '#inline-source-map',
+  devtool: 'eval-source-map',
   resolveLoader: {
     alias: {
       'scss-loader': 'sass-loader'

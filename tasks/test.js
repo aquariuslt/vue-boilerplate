@@ -14,7 +14,7 @@ gulp.task('test', sequence(['test:unit'], ['test:e2e']));
 gulp.task('test:unit', (done) => {
   process.env.BABEL_ENV = 'test';
   new Server({
-    configFile: pathUtil.root(baseConfig.dir.test.unit) + '/' + baseConfig.file.karmaConf,
+    configFile: pathUtil.resolve('tasks/config') + '/' + baseConfig.file.karmaConf,
     singleRun: true
   }, done).start();
 });

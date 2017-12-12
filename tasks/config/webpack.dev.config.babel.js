@@ -11,7 +11,7 @@ import vueLoaderUtil from '../util/vue-loader-util';
 import pathUtil from '../util/path-util';
 
 let webpackDevConfig = merge(webpackBaseConfig, {
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   output: {
     path: devConfig.output.path,
     publicPath: devConfig.output.publicPath,
