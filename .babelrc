@@ -3,8 +3,7 @@
     [
       "env"
     ],
-    "stage-2",
-    "es2015"
+    "stage-2"
   ],
   "plugins": [
     "transform-runtime",
@@ -15,7 +14,6 @@
     "test": {
       "presets": [
         "env",
-        "stage-2",
         "es2015"
       ],
       "plugins": [
