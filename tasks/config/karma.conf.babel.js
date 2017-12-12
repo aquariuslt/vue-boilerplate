@@ -40,10 +40,10 @@ let karmaConfig = function(config) {
       thresholds: {
         emitWarning: false,
         global: {
-          statements: 1,
+          statements: 0,
           lines: 1,
-          branches: 1,
-          functions: 1
+          branches: 0,
+          functions: 0
         }
       }
     }

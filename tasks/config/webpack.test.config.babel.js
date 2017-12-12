@@ -23,12 +23,26 @@ let webpackTestConfig = merge(webpackBaseConfig, {
         enforce: 'post',
         test: /\.js$/,
         include: [
-          pathUtil.resolve('src/main/webapp')
+          pathUtil.resolve('src')
         ],
         exclude: [
           /node_modules/
         ],
         loader: 'istanbul-instrumenter-loader'
+      },
+      {
+        enforce: 'post',
+        test: /\.vue$/,
+        include: [
+          pathUtil.resolve('src')
+        ],
+        exclude: [
+          /node_modules/
+        ],
+        loader: 'istanbul-instrumenter-loader',
+        query: {
+          esModules: true
+        }
       }
     ]
   },

@@ -17,6 +17,7 @@ let webpackBaseConfig = {
       '.vue'
     ],
     alias: {
+      '@': pathUtil.resolve('src'),
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
