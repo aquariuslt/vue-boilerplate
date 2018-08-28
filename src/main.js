@@ -6,7 +6,7 @@ import VueMaterial from 'vue-material';
 import router from './router';
 import store from './store';
 
-import './app/core';
+import './core';
 import './offline';
 
 import App from './App.vue';

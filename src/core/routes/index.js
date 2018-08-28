@@ -1,8 +1,8 @@
 /* Created by Aquariuslt on 4/24/17.*/
 
-import Home from '../layouts/Home.vue';
+import Home from '../containers/Home.vue';
 
-const coreRoutes = [
+const index = [
   {
     path: '/',
     name: 'Home',
@@ -10,4 +10,4 @@ const coreRoutes = [
   }
 ];
 
-export default coreRoutes;
+export default index;

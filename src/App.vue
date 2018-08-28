@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <h1>Navigation:</h1>
+    <navigation></navigation>
     <router-view></router-view>
   </div>
 </template>
 
 
 <script>
+  import Navigation from '@/core/components/Navigation';
   export default {
+    components: { Navigation },
     data () {
       return {
       };
@@ -16,7 +18,3 @@
     }
   };
 </script>
-
-<style>
-
-</style>

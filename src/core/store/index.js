@@ -1,9 +1,9 @@
 /* Created by Aquariuslt on 4/24/17.*/
 
 
-let coreStore = {
+let index = {
   state: {},
   mutations: {}
 };
 
-export default coreStore;
+export default index;
