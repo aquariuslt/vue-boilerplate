@@ -6,7 +6,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import addDevServerEntrypoints from 'webpack-dev-server/lib/util/addDevServerEntrypoints';
 
-import webpackDevConfig from '../config/webpack.dev.config.babel';
+import webpackDevConfig from '../config/webpack.dev.babel';
 
 gulp.task('serve', function() {
   log.info('Webpack building.');

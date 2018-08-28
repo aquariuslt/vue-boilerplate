@@ -1,12 +1,15 @@
 /* Created by Aquariuslt on 4/11/17.*/
+import './styles.less';
+
 import Vue from 'vue';
 import VueMaterial from 'vue-material';
 import router from './router';
 import store from './store';
-import './app/core';
-import './app/auth';
 
-import App from './app/App.vue';
+import './app/core';
+import './offline';
+
+import App from './App.vue';
 
 Vue.config.productionTip = false;
 Vue.use(VueMaterial);
@@ -16,5 +19,7 @@ new Vue({
   store,
   router,
   template: '<app/>',
-  components: {App}
+  components: { App }
 });
+
+console.log('init vue complete');

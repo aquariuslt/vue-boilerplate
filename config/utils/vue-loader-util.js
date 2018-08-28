@@ -1,4 +1,3 @@
-/** Created by CUIJA on 04-17-2017.*/
 import _ from 'lodash';
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -41,6 +40,9 @@ function buildVueStylesLoader(options) {
       css: generateStylesLoader(null, options),
       postcss: generateStylesLoader(null, options),
       less: generateStylesLoader('less', options),
+      sass: generateStylesLoader('sass', options, {indentedSyntax: true}),
+      scss: generateStylesLoader('sass', options),
+      stylus: generateStylesLoader('stylus', options),
       styl: generateStylesLoader('stylus', options)
     }
   };
@@ -52,7 +54,7 @@ function buildVueStylesLoader(options) {
  * @param {Object} extraOptions
  * */
 function generateStylesLoader(loaderNamePrefix, loaderOptions, extraOptions) {
-  let { sourceMap, extract, minimize } = loaderOptions;
+  let {sourceMap, extract, minimize} = loaderOptions;
   sourceMap = _.isUndefined(sourceMap) ? true : sourceMap;
   extract = _.isUndefined(extract) ? false : extract;
   minimize = _.isUndefined(sourceMap) ? false : minimize;

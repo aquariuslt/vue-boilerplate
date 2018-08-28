@@ -4,7 +4,7 @@ import log from 'fancy-log';
 import sequence from 'gulp-sequence';
 
 import webpack from 'webpack';
-import webpackProdConfig from '../config/webpack.prod.config.babel';
+import webpackProdConfig from '../config/webpack.prod.babel';
 
 import './clean';
 

@@ -1,20 +1,28 @@
 /* Created by Aquariuslt on 14/04/2017.*/
 import webpack from 'webpack';
 import merge from 'webpack-merge';
-import webpackBaseConfig from './webpack.base.config.babel';
+import webpackBaseConfig from './webpack.base.babel';
 
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
+import VueLoaderPlugin from 'vue-loader/lib/plugin';
 
-import devConfig from './dev.config';
-import vueLoaderUtil from './util/vue-loader-util';
-import pathUtil from './util/path-util';
+import vueLoaderUtil from './utils/vue-loader-util';
+import pathUtil from './utils/path-util';
+
+import baseConfig from './base.config';
+
+const PROTOCOL = 'http://';
+
+
 
 let webpackDevConfig = merge(webpackBaseConfig, {
+  mode: 'development',
   devtool: 'eval-source-map',
   output: {
-    path: devConfig.output.path,
-    publicPath: devConfig.output.publicPath,
+    path: pathUtil.resolve(baseConfig.dir.build),
+    publicPath: PROTOCOL + baseConfig.dev.host + ':' + baseConfig.dev.port,
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].bundle.js.map',
     chunkFilename: '[id].chunk.js'
@@ -33,33 +41,20 @@ let webpackDevConfig = merge(webpackBaseConfig, {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"development"'
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            pathUtil.root('node_modules')
-          ) === 0
-        );
-      }
-    }),
     new ExtractTextPlugin({
       filename: '[name].bundle.css'
     }),
+    new HtmlWebpackPlugin({
+      template: baseConfig.dir.src + '/index.html',
+      favicon: baseConfig.dir.src + '/' + baseConfig.file.favicon
+    }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new FriendlyErrorsPlugin()
+    new FriendlyErrorsPlugin(),
+    new VueLoaderPlugin()
   ],
   devServer: {
-    host: devConfig.devServer.host,
-    port: devConfig.devServer.port,
+    host: baseConfig.dev.host,
+    port: baseConfig.dev.port,
     historyApiFallback: true,
     quiet: false,
     noInfo: true,
@@ -74,7 +69,7 @@ let webpackDevConfig = merge(webpackBaseConfig, {
       chunks: true,
       chunkModules: false
     },
-    publicPath: devConfig.output.publicPath
+    publicPath: PROTOCOL + baseConfig.dev.host + ':' + baseConfig.dev.port,
   }
 });
 

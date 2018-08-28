@@ -1,15 +1,13 @@
 /* Created by Aquariuslt on 14/04/2017.*/
 
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-import pathUtil from './util/path-util';
+import pathUtil from './utils/path-util';
 import baseConfig from './base.config';
 
 let webpackBaseConfig = {
   entry: {
-    main: './src/main.js',
-    styles: './src/styles.css'
+    main: pathUtil.resolve(baseConfig.dir.src) + '/' + 'main.js'
   },
   resolve: {
     extensions: [
@@ -26,15 +24,23 @@ let webpackBaseConfig = {
       {
         test: /\.js$/,
         include: [
-          pathUtil.root(baseConfig.dir.src),
-          pathUtil.root(baseConfig.dir.test.unit),
-          pathUtil.root(baseConfig.dir.test.e2e)
+          pathUtil.resolve(baseConfig.dir.src),
+          pathUtil.resolve(baseConfig.dir.test.unit),
+          pathUtil.resolve(baseConfig.dir.test.e2e)
         ],
         loader: 'babel-loader'
       },
       {
+        test: /\.less$/,
+        include: pathUtil.resolve('src'),
+        loader: ExtractTextPlugin.extract({
+          use: ['css-loader', 'less-loader'],
+          fallback: ['style-loader']
+        })
+      },
+      {
         test: /\.css$/,
-        include: pathUtil.root(baseConfig.dir.src),
+        include: pathUtil.resolve(baseConfig.dir.src),
         loader: ExtractTextPlugin.extract({
           use: ['css-loader'],
           fallback: ['style-loader']
@@ -60,13 +66,7 @@ let webpackBaseConfig = {
         }
       }
     ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: `./${baseConfig.dir.src}/index.html`,
-      favicon: `./${baseConfig.dir.src}/${baseConfig.file.favicon}`
-    })
-  ]
+  }
 };
 
 export default webpackBaseConfig;

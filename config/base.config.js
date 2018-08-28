@@ -3,7 +3,13 @@ let baseConfig = {
   dir: {
     src: 'src',
     build: 'build',
-    dist: 'dist',
+    dist: {
+      root: 'dist',
+      js: 'static/js',
+      css: 'static/css',
+      img: 'static/img',
+      manifest: 'static/manifest'
+    },
     cache: '.cache',
     test: {
       unit: 'test/unit',
@@ -17,9 +23,11 @@ let baseConfig = {
     ]
   },
   file: {
-    favicon: 'favicon.png',
-    karmaConf: 'karma.conf.babel.js',
-    nightWatch: 'nightwatch.json'
+    favicon: 'favicon.png'
+  },
+  dev: {
+    host: '127.0.0.1',
+    port: 5000
   }
 };
 

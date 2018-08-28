@@ -4,7 +4,7 @@ import Home from '../layouts/Home.vue';
 
 const coreRoutes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: Home
   }

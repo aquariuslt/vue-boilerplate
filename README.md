@@ -18,22 +18,22 @@ Features:
 
 ### Install Dependencies
 ```bash
-npm install
+yarn
 ```
 
 ### Development 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 ### Build Production Level files
 ```bash
-npm run build
+yarn run build
 ```
 
 ### Test
 ```bash
-npm run test
+yarn test
 ```
 
 
