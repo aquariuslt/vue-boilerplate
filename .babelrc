@@ -1,23 +1,20 @@
 {
   "presets": [
-    [
-      "env"
-    ],
-    "stage-2"
+    "@babel/preset-env",
+    "@babel/preset-stage-0"
   ],
   "plugins": [
-    "transform-runtime",
-    "add-module-exports"
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-class-properties"
   ],
-  "comments": false,
   "env": {
     "test": {
       "presets": [
-        "env",
-        "stage-2"
+        "@babel/preset-env",
+        "@babel/preset-stage-0"
       ],
       "plugins": [
-        "istanbul"
+        "@babel/plugin-transform-runtime"
       ]
     }
   }

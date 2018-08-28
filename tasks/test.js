@@ -1,24 +1,24 @@
-/* Created by Aquariuslt on 16/04/2017.*/
 import gulp from 'gulp';
 import sequence from 'gulp-sequence';
+import jest from 'jest';
 
-import {Server} from 'karma';
-
-import baseConfig from './config/base.config';
-import pathUtil from './util/path-util';
-
-
-gulp.task('test', sequence(['test:unit'], ['test:e2e']));
-
-
-gulp.task('test:unit', (done) => {
+gulp.task('test:unit', function(done) {
   process.env.BABEL_ENV = 'test';
-  new Server({
-    configFile: pathUtil.resolve('tasks/config') + '/' + baseConfig.file.karmaConf,
-    singleRun: true
-  }, done).start();
+  const jestCliConfig = {
+    coverage: true
+  };
+  jest.runCLI(jestCliConfig, ['.']).then(async () => {
+    done();
+  });
 });
 
-gulp.task('test:e2e', () => {
+gulp.task('test:e2e', function() {
 
 });
+
+gulp.task('test:api', function() {
+
+});
+
+gulp.task('test', sequence(['test:unit'], ['test:e2e'], ['test:api']));
+

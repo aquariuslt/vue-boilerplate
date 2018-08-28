@@ -7,8 +7,8 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 
 import devConfig from './dev.config';
-import vueLoaderUtil from '../util/vue-loader-util';
-import pathUtil from '../util/path-util';
+import vueLoaderUtil from './util/vue-loader-util';
+import pathUtil from './util/path-util';
 
 let webpackDevConfig = merge(webpackBaseConfig, {
   devtool: 'eval-source-map',

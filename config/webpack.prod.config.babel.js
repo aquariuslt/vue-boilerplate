@@ -9,8 +9,8 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 import webpackBaseConfig from './webpack.base.config.babel';
 import prodConfig from './prod.config';
-import vueLoaderUtil from '../util/vue-loader-util';
-import pathUtil from '../util/path-util';
+import vueLoaderUtil from './util/vue-loader-util';
+import pathUtil from './util/path-util';
 
 let webpackProdConfig = merge(webpackBaseConfig, {
   devtool: 'source-map',

@@ -4,8 +4,8 @@ import merge from 'webpack-merge';
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpackBaseConfig from './webpack.base.config.babel';
-import vueLoaderUtil from '../util/vue-loader-util';
-import pathUtil from '../util/path-util';
+import vueLoaderUtil from './util/vue-loader-util';
+import pathUtil from './util/path-util';
 
 let webpackTestConfig = merge(webpackBaseConfig, {
   module: {

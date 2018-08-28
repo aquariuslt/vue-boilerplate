@@ -41,20 +41,18 @@ function buildVueStylesLoader(options) {
       css: generateStylesLoader(null, options),
       postcss: generateStylesLoader(null, options),
       less: generateStylesLoader('less', options),
-      sass: generateStylesLoader('sass', options, {indentedSyntax: true}),
-      scss: generateStylesLoader('sass', options),
-      stylus: generateStylesLoader('stylus', options),
       styl: generateStylesLoader('stylus', options)
     }
   };
 }
+
 /*
  * @param {String} loaderNamePrefix like css,less,sass,scss,stylus ...
  * @param {Object} loaderOptions including 3 boolean properties: sourceMap,extract,minimize
  * @param {Object} extraOptions
  * */
 function generateStylesLoader(loaderNamePrefix, loaderOptions, extraOptions) {
-  let {sourceMap, extract, minimize} = loaderOptions;
+  let { sourceMap, extract, minimize } = loaderOptions;
   sourceMap = _.isUndefined(sourceMap) ? true : sourceMap;
   extract = _.isUndefined(extract) ? false : extract;
   minimize = _.isUndefined(sourceMap) ? false : minimize;
@@ -67,7 +65,6 @@ function generateStylesLoader(loaderNamePrefix, loaderOptions, extraOptions) {
       sourceMap: sourceMap
     }
   };
-
 
   let loaders = [cssLoader];
 
@@ -88,7 +85,6 @@ function generateStylesLoader(loaderNamePrefix, loaderOptions, extraOptions) {
     loaders.push(currentLoader);
   }
 
-
   if (extract) {
     return ExtractTextPlugin.extract({
       use: loaders,
@@ -99,7 +95,6 @@ function generateStylesLoader(loaderNamePrefix, loaderOptions, extraOptions) {
   }
 }
 
-
-export default{
+export default {
   buildVueStylesLoader
 };
