@@ -1,6 +1,10 @@
 <template>
   <div>
-    Navigation
+    <md-app md-mode="reveal">
+      <md-app-toolbar md-mode="flexible">
+
+      </md-app-toolbar>
+    </md-app>
   </div>
 </template>
 

@@ -56,6 +56,7 @@ let webpackDevConfig = merge(webpackBaseConfig, {
     host: baseConfig.dev.host,
     port: baseConfig.dev.port,
     historyApiFallback: true,
+    open: true,
     quiet: false,
     noInfo: true,
     stats: {

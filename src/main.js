@@ -21,5 +21,3 @@ new Vue({
   template: '<app/>',
   components: { App }
 });
-
-console.log('init vue complete');

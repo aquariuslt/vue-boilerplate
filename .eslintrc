@@ -1,34 +1,3 @@
 {
-  "root": true,
-  "extends": "google",
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module"
-  },
-  "env": {
-    "browser": true
-  },
-  "plugins": [
-    "html"
-  ],
-  "rules": {
-    "semi": [
-      "error",
-      "always",
-      {
-        "omitLastInOneLineBlock": true
-      }
-    ],
-    "comma-dangle": [
-      "error",
-      "never"
-    ],
-    "require-jsdoc": "off",
-    "prefer-rest-params": "off",
-    "space-before-function-paren": "off",
-    "max-len": "off",
-    "linebreak-style": "off",
-    "no-unused-vars": "off",
-    "eol-last": "off"
-  }
+  "extends": "plugin:vue/essential"
 }

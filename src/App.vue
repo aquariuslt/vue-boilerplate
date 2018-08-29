@@ -1,20 +1,15 @@
 <template>
   <div id="app">
-    <navigation></navigation>
-    <router-view></router-view>
+    <navigation/>
+    <router-view/>
   </div>
 </template>
 
 
 <script>
   import Navigation from '@/core/components/Navigation';
+
   export default {
-    components: { Navigation },
-    data () {
-      return {
-      };
-    },
-    mounted: function () {
-    }
+    components: { Navigation }
   };
 </script>

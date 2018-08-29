@@ -60,7 +60,7 @@ let webpackBaseConfig = {
         test: /\.(woff|woff2|ttf|eot)$/,
         loader: 'file-loader',
         options: {
-          useRelativePath: true,
+          limit: 10000,
           publicPath: './',
           name: '[name].[ext]'
         }
