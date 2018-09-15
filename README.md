@@ -1,7 +1,7 @@
 # Vue-Boilerplate
 
-[![Build Status](https://travis-ci.org/Aquariuslt/vue-boilerplate.svg?branch=master)](https://travis-ci.org/Aquariuslt/vue-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/Aquariuslt/vue-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/Aquariuslt/vue-boilerplate?branch=master)
+[![Build Status](https://travis-ci.org/aquariuslt/vue-boilerplate.svg?branch=master)](https://travis-ci.org/aquariuslt/vue-boilerplate)
+[![Coverage Status](https://coveralls.io/repos/github/aquariuslt/vue-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/aquariuslt/vue-boilerplate?branch=master)
 
 
 A Vue Boilerplate different with Official `Vue-Template`.
