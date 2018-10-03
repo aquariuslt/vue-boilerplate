@@ -1,18 +1,14 @@
 language: node_js
 node_js:
-- "8"
+  - "8"
 
 cache: yarn
 
 install:
-- yarn
-
-
-before_script:
-- yarn add global gulp
+  - yarn
 
 script: yarn run test
 
 # Submit Coverage Status to coveralls.io
 after_script:
-- cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls
+  - cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls

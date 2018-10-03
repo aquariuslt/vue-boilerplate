@@ -8,6 +8,7 @@ let baseConfig = {
       js: 'static/js',
       css: 'static/css',
       img: 'static/img',
+      fonts: 'static/fonts',
       manifest: 'static/manifest'
     },
     cache: '.cache',
@@ -18,7 +19,7 @@ let baseConfig = {
     assets: [
       {
         from: 'src/assets',
-        to: 'assets'
+        to: 'static'
       }
     ]
   },

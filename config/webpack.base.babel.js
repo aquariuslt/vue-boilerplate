@@ -34,7 +34,16 @@ let webpackBaseConfig = {
         test: /\.less$/,
         include: pathUtil.resolve('src'),
         loader: ExtractTextPlugin.extract({
-          use: ['css-loader', 'less-loader'],
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader',
+            'less-loader'
+          ],
           fallback: ['style-loader']
         })
       },
@@ -42,7 +51,15 @@ let webpackBaseConfig = {
         test: /\.css$/,
         include: pathUtil.resolve(baseConfig.dir.src),
         loader: ExtractTextPlugin.extract({
-          use: ['css-loader'],
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
+            'postcss-loader'
+          ],
           fallback: ['style-loader']
         })
       },
@@ -62,7 +79,7 @@ let webpackBaseConfig = {
         options: {
           limit: 10000,
           publicPath: './',
-          name: '[name].[ext]'
+          name: baseConfig.dir.dist.fonts + '/' + '[name].[ext]'
         }
       }
     ]
