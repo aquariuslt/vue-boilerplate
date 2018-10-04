@@ -31,7 +31,7 @@ let baseConfig = {
     port: 5000
   },
   prod: {
-    context: '/vue-boilerplate/'
+    context: process.env.CONTEXT || ''
   }
 };
 
