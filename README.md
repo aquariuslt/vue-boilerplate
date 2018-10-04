@@ -6,6 +6,8 @@
 [![dependencies Status](https://david-dm.org/aquariuslt/vue-boilerplate/status.svg)](https://david-dm.org/aquariuslt/vue-boilerplate)
 
 
+[Online Demo](https://blog.aquariuslt.com/vue-boilerplate/)
+
 ## Features
 
 - Lint Staged Support
