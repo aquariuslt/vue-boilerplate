@@ -83,17 +83,19 @@ let webpackProdConfig = merge(webpackBaseConfig, {
   },
   stats: {
     colors: true,
+    env: true,
     hash: true,
     timings: true,
     chunks: true,
     chunkModules: false,
-    chunksSort: 'name',
+    chunksSort: 'field',
     children: false,
     modules: false,
     reasons: false,
-    warnings: true,
+    warnings: false,
     assets: false,
-    version: false
+    version: true,
+    publicPath: true
   }
 });
 

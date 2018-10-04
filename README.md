@@ -26,12 +26,12 @@ yarn
 
 ### Development 
 ```bash
-yarn run dev
+yarn dev
 ```
 
 ### Build Production Level files
 ```bash
-yarn run build
+yarn build
 ```
 
 ### Test
