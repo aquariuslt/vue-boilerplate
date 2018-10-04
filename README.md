@@ -8,8 +8,12 @@
 
 ## Features
 
-
-
+- Lint Staged Support
+- Test with Jest
+- Latest Babel Version and Presets
+- Webpack 4 Support
+- Postcss Support
+- All ES6+ Syntax (without any CommonJS `module.exports` and `require` at App Code)
 
 ## Get Started 
 

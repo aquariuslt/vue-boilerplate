@@ -2,13 +2,28 @@ language: node_js
 node_js:
   - "8"
 
-cache: yarn
+cache:
+  directories:
+    - node_modules
 
 install:
   - yarn
 
-script: yarn run test
+script:
+  - yarn test
+  - yarn run build
 
 # Submit Coverage Status to coveralls.io
 after_script:
   - cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls
+
+
+deploy:
+  provider: pages
+  github-token: $GITHUB_TOKEN
+  local_dir: dist
+  skip-cleanup: true
+  keep-history: true
+  on:
+    branch: master
+  target-branch: gh-pages
