@@ -1,9 +1,11 @@
-/* Created by Aquariuslt on 4/24/17.*/
+import state from './state';
+import mutations from './mutations';
+import actions from './actions';
+import getters from './getters';
 
-
-let index = {
-  state: {},
-  mutations: {}
+export default {
+  state,
+  mutations,
+  actions,
+  getters
 };
-
-export default index;

@@ -81,6 +81,11 @@ let webpackBaseConfig = {
           publicPath: './',
           name: baseConfig.dir.dist.fonts + '/' + '[name].[ext]'
         }
+      },
+      {
+        test: /\.properties$/,
+        include: pathUtil.resolve(baseConfig.dir.src),
+        loader: 'properties-json-loader'
       }
     ]
   }
