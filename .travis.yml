@@ -8,6 +8,7 @@ cache:
 
 install:
   - yarn
+  - yarn global add codecov
 
 script:
   - yarn test
@@ -16,7 +17,7 @@ script:
 # Submit Coverage Status to coveralls.io
 after_script:
   - cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls
-
+  - codecov
 
 deploy:
   provider: pages
