@@ -1,7 +1,7 @@
 # Vue-Boilerplate
 
 [![Build Status](https://travis-ci.org/aquariuslt/vue-boilerplate.svg?branch=master)](https://travis-ci.org/aquariuslt/vue-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/aquariuslt/vue-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/aquariuslt/vue-boilerplate?branch=master)
+[![codecov](https://img.shields.io/codecov/c/github/aquariuslt/vue-boilerplate/master.svg)](https://codecov.io/gh/aquariuslt/vue-boilerplate)
 [![GitHub license](https://img.shields.io/github/license/aquariuslt/vue-boilerplate.svg)](https://github.com/aquariuslt/vue-boilerplate/blob/master/LICENSE)
 [![dependencies Status](https://david-dm.org/aquariuslt/vue-boilerplate/status.svg)](https://david-dm.org/aquariuslt/vue-boilerplate)
 

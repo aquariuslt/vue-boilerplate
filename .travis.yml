@@ -14,9 +14,8 @@ script:
   - yarn test
   - yarn run build
 
-# Submit Coverage Status to coveralls.io
+
 after_script:
-  - cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls
   - codecov
 
 deploy:
