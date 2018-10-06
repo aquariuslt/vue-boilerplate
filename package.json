@@ -144,5 +144,10 @@
       "!**/*.{api.js}",
       "!**/core/index.js"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
