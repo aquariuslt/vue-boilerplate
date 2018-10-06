@@ -78,8 +78,7 @@ let webpackBaseConfig = {
         loader: 'file-loader',
         options: {
           limit: 10000,
-          publicPath: './',
-          name: baseConfig.dir.dist.fonts + '/' + '[name].[ext]'
+          name:  baseConfig.dir.dist.fonts + '/' + '[name].[ext]'
         }
       },
       {

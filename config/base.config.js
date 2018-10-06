@@ -18,7 +18,7 @@ let baseConfig = {
     },
     assets: [
       {
-        from: 'src/assets',
+        from: 'src/static',
         to: 'static'
       }
     ]

@@ -15,14 +15,12 @@ import baseConfig from './base.config';
 
 const PROTOCOL = 'http://';
 
-
-
 let webpackDevConfig = merge(webpackBaseConfig, {
   mode: 'development',
   devtool: 'eval-source-map',
   output: {
     path: pathUtil.resolve(baseConfig.dir.build),
-    publicPath: PROTOCOL + baseConfig.dev.host + ':' + baseConfig.dev.port,
+    publicPath: PROTOCOL + baseConfig.dev.host + ':' + baseConfig.dev.port + '/',
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].bundle.js.map',
     chunkFilename: '[id].chunk.js'
@@ -70,7 +68,7 @@ let webpackDevConfig = merge(webpackBaseConfig, {
       chunks: true,
       chunkModules: false
     },
-    publicPath: PROTOCOL + baseConfig.dev.host + ':' + baseConfig.dev.port,
+    publicPath: PROTOCOL + baseConfig.dev.host + ':' + baseConfig.dev.port
   }
 });
 
