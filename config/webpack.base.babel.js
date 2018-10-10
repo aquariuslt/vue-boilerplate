@@ -1,7 +1,5 @@
 /* Created by Aquariuslt on 14/04/2017.*/
 
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
 import pathUtil from './utils/path-util';
 import baseConfig from './base.config';
 
@@ -15,12 +13,16 @@ let webpackBaseConfig = {
       '.vue'
     ],
     alias: {
-      '@': pathUtil.resolve('src'),
+      '@': pathUtil.resolve(baseConfig.dir.src),
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.js$/,
         include: [
@@ -29,39 +31,6 @@ let webpackBaseConfig = {
           pathUtil.resolve(baseConfig.dir.test.e2e)
         ],
         loader: 'babel-loader'
-      },
-      {
-        test: /\.less$/,
-        include: pathUtil.resolve('src'),
-        loader: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1
-              }
-            },
-            'postcss-loader',
-            'less-loader'
-          ],
-          fallback: ['style-loader']
-        })
-      },
-      {
-        test: /\.css$/,
-        include: pathUtil.resolve(baseConfig.dir.src),
-        loader: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1
-              }
-            },
-            'postcss-loader'
-          ],
-          fallback: ['style-loader']
-        })
       },
       {
         test: /\.(png|jpe?g|gif|svg|ico)$/,
@@ -78,7 +47,7 @@ let webpackBaseConfig = {
         loader: 'file-loader',
         options: {
           limit: 10000,
-          name:  baseConfig.dir.dist.fonts + '/' + '[name].[ext]'
+          name: baseConfig.dir.dist.fonts + '/' + '[name].[ext]'
         }
       },
       {

@@ -8,7 +8,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 import VueLoaderPlugin from 'vue-loader/lib/plugin';
 
-import vueLoaderUtil from './utils/vue-loader-util';
 import pathUtil from './utils/path-util';
 
 import baseConfig from './base.config';
@@ -28,13 +27,23 @@ let webpackDevConfig = merge(webpackBaseConfig, {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderUtil.buildVueStylesLoader({
-          sourceMap: true,
-          extract: false,
-          minimize: false
-        })
+        test: /\.less$/,
+        include: pathUtil.resolve(baseConfig.dir.src),
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.css$/,
+        include: pathUtil.resolve(baseConfig.dir.src),
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
       }
     ]
   },
